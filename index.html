@@ -263,7 +263,7 @@
             </div>
             <div class="relative flex justify-center items-center group">
                 <div class="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl -z-10"></div>
-                <img src="assets/images/desktop/en/organize-labels.png" alt="Organize with labels on Desktop" class="lang-img w-full max-w-6xl rounded-2xl shadow-2xl group-hover:scale-[1.01] transition-transform duration-500" data-src-en="assets/images/desktop/en/organize-labels.png" data-src-cs="assets/images/desktop/cs/organize-labels.png">
+                <img src="assets/images/screenshots/your-way-labels-en.png" alt="Organize with labels" class="lang-img w-full max-w-6xl rounded-2xl shadow-2xl group-hover:scale-[1.01] transition-transform duration-500" data-src-en="assets/images/screenshots/your-way-labels-en.png" data-src-cs="assets/images/screenshots/your-way-labels-cs.png">
             </div>
         </div>
 
@@ -1094,6 +1094,14 @@ function setLanguage(lang) {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
             el.textContent = translations[lang][key];
+        }
+    });
+
+    // Update placeholder translations
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            el.placeholder = translations[lang][key];
         }
     });
 
