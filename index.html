@@ -116,14 +116,17 @@
         </a>
 
         <div class="hidden md:flex items-center gap-8">
-            <a href="#features" class="hover:text-primary transition-colors">Features</a>
-            <a href="#screenshots" class="hover:text-primary transition-colors">Screenshots</a>
-            <a href="#use-cases" class="hover:text-primary transition-colors">Use Cases</a>
-            <a href="#faq" class="hover:text-primary transition-colors">FAQ</a>
-            <a href="#download" class="px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90 transition-opacity">Download</a>
+            <a href="#features" class="hover:text-primary transition-colors" data-i18n="nav.features">Features</a>
+            <a href="#faq" class="hover:text-primary transition-colors" data-i18n="nav.faq">FAQ</a>
+            <a href="#download" class="px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90 transition-opacity" data-i18n="nav.download">Download</a>
         </div>
 
         <div class="flex items-center gap-2">
+            <!-- Language toggle -->
+            <button id="lang-toggle" class="p-2 px-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-bold text-gray-700 dark:text-gray-300">
+                <span id="lang-label">EN</span>
+            </button>
+
             <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                 <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
                 <svg class="w-5 h-5 block dark:hidden text-gray-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
@@ -144,18 +147,16 @@
     <!-- Mobile menu drawer -->
     <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-700 transform -translate-y-full opacity-0 transition-all duration-300 ease-out pointer-events-none">
         <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col gap-4">
-            <a href="#features" class="mobile-link py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-semibold">Features</a>
-            <a href="#screenshots" class="mobile-link py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-semibold">Screenshots</a>
-            <a href="#use-cases" class="mobile-link py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-semibold">Use Cases</a>
-            <a href="#faq" class="mobile-link py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-semibold">FAQ</a>
-            <a href="#download" class="py-3 px-4 gradient-bg text-white rounded-xl font-bold text-center mobile-link">Download</a>
+            <a href="#features" class="mobile-link py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-semibold" data-i18n="nav.features">Features</a>
+            <a href="#faq" class="mobile-link py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-semibold" data-i18n="nav.faq">FAQ</a>
+            <a href="#download" class="py-3 px-4 gradient-bg text-white rounded-xl font-bold text-center mobile-link" data-i18n="nav.download">Download</a>
         </div>
     </div>
 </nav>
 
 
 <!-- ==================== HERO ==================== -->
-<section class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+<section class="relative pt-24 pb-8 overflow-hidden">
     <!-- Animated background blobs -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
         <div class="absolute top-20 -left-20 w-96 h-96 bg-primary/20 blob blur-3xl animate-float"></div>
@@ -163,431 +164,189 @@
         <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-accent-purple/10 blob blur-3xl animate-float"></div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-6 py-20">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <!-- Text Content -->
-            <div class="text-center lg:text-left animate-slide-up">
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-semibold mb-6">
-                    <span class="w-2 h-2 bg-accent-green rounded-full animate-pulse"></span>
-                    Now available on all platforms
+    <div class="max-w-7xl mx-auto px-6">
+        <!-- Text Content - Centered -->
+        <div class="text-center animate-slide-up mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-semibold mb-6">
+                <span class="w-2 h-2 bg-accent-green rounded-full animate-pulse"></span>
+                <span data-i18n="hero.badge">Now available on all platforms</span>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-tight">
+                <span data-i18n="hero.title1">Bring Order to Your</span>
+                <br>
+                <span class="gradient-text" data-i18n="hero.title2">Inventory</span>
+            </h1>
+
+            <p class="mt-6 text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" data-i18n="hero.subtitle">
+                Perfect for Families, Schools & Businesses. Track items with QR codes, share with your household, and stay organized together.
+            </p>
+
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#download" class="group px-8 py-4 gradient-bg text-white font-bold rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all flex items-center justify-center gap-2">
+                    <span data-i18n="hero.ctaStart">Get Started Free</span>
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+                <a href="https://doc.janzimola.com/doc/itemee-lxPiTQC2go" target="_blank" class="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-xl font-bold hover:border-primary hover:text-primary transition-colors flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span data-i18n="hero.ctaDocs">Documentation</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Large Hero Desktop Screenshot -->
+        <div class="relative animate-slide-up group">
+            <div class="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl -z-10"></div>
+            <img src="assets/images/desktop/en/hero.png" alt="Itemee App on Desktop" class="lang-img w-full max-w-6xl mx-auto rounded-2xl shadow-2xl shadow-primary/30 group-hover:scale-[1.01] transition-transform duration-500" data-src-en="assets/images/desktop/en/hero.png" data-src-cs="assets/images/desktop/cs/hero.png">
+
+            <!-- Floating badges -->
+            <div class="absolute top-4 right-4 md:top-8 md:right-8 px-4 py-2 bg-accent-green text-white rounded-full text-sm font-bold shadow-lg animate-bounce-subtle" data-i18n="hero.badgeOffline">
+                Offline First
+            </div>
+
+            <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 p-4 bg-surface-light dark:bg-surface-dark rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm" data-i18n="hero.qrTitle">QR Scanning</div>
+                        <div class="text-xs text-gray-500" data-i18n="hero.qrSubtitle">Instant lookup</div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-tight">
-                    Bring Order to Your
-                    <span class="gradient-text">Inventory</span>
-                </h1>
 
-                <p class="mt-6 text-xl text-gray-600 dark:text-gray-300 max-w-lg mx-auto lg:mx-0">
-                    Perfect for Home, School & Business. Track items with QR codes, collaborate with your team, and stay organized.
+<!-- ==================== STORY FLOW - Like App Store Listing ==================== -->
+<section id="features" class="py-16 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <!-- STORY 1: Bring Order to Your Home -->
+        <div class="mb-40" data-animate>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+                    <span data-i18n="story.home.title1">Bring Order to</span>
+                    <span class="gradient-text" data-i18n="story.home.title2">Your Home</span>
+                </h2>
+                <p class="text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto" data-i18n="story.home.desc">
+                    Track your pantry, tools, and household items. Never buy duplicates or forget where you stored something.
                 </p>
-
-                <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="#download" class="group px-8 py-4 gradient-bg text-white font-bold rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all flex items-center justify-center gap-2">
-                        Get Started Free
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                    </a>
-                    <a href="https://doc.janzimola.com/doc/itemee-lxPiTQC2go" target="_blank" class="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-xl font-bold hover:border-primary hover:text-primary transition-colors flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                        Documentation
-                    </a>
-                </div>
             </div>
-
-            <!-- Hero Image with floating elements -->
-            <div class="relative animate-slide-in-right">
-                <div class="relative mx-auto max-w-sm lg:max-w-md">
-                    <img src="assets/images/screenshots/hero.png" alt="Itemee App" class="rounded-3xl shadow-2xl shadow-primary/20 animate-float">
-
-                    <!-- Floating badges -->
-                    <div class="absolute -top-4 -right-4 px-4 py-2 bg-accent-green text-white rounded-full text-sm font-bold shadow-lg animate-bounce-subtle">
-                        Offline First
-                    </div>
-
-                    <div class="absolute -bottom-6 -left-6 p-4 bg-surface-light dark:bg-surface-dark rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 animate-float-delayed">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
-                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
-                            </div>
-                            <div>
-                                <div class="font-bold text-sm">QR Scanning</div>
-                                <div class="text-xs text-gray-500">Instant lookup</div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="relative flex justify-center items-center group rounded-3xl overflow-hidden">
+                <!-- Lifestyle background image -->
+                <div class="absolute inset-0 -z-10">
+                    <img src="assets/images/backgrounds/home-pantry-bg.png" alt="" class="w-full h-full object-cover opacity-30 dark:opacity-20">
+                    <div class="absolute inset-0 bg-gradient-to-t from-bg-light dark:from-bg-dark via-transparent to-bg-light dark:to-bg-dark"></div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- ==================== FEATURES ==================== -->
-<section id="features" class="py-24 bg-surface-light dark:bg-surface-dark">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16" data-animate>
-            <h2 class="text-4xl md:text-5xl font-black">
-                Powerful <span class="gradient-text">Features</span>
-            </h2>
-            <p class="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Everything you need to manage your inventory efficiently
-            </p>
-        </div>
-
-        <!-- Bento Grid Layout -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Large Feature Card -->
-            <div class="lg:col-span-2 p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-transparent border border-primary/20 card-hover" data-animate>
-                <div class="flex flex-col md:flex-row gap-6 items-start">
-                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center shrink-0">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold mb-2">QR Code Scanning & Printing</h3>
-                        <p class="text-gray-600 dark:text-gray-300">Generate unique QR codes for each item. Scan to instantly view details, update quantities, or verify inventory. Print labels for physical organization.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature Card -->
-            <div class="p-6 rounded-3xl bg-bg-light dark:bg-bg-dark border border-gray-200 dark:border-gray-700 card-hover" data-animate>
-                <div class="w-12 h-12 bg-accent-purple/10 rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-accent-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Team Collaboration</h3>
-                <p class="text-gray-600 dark:text-gray-300">Invite members with roles. Changes sync in real-time across your organization.</p>
-            </div>
-
-            <!-- Feature Card -->
-            <div class="p-6 rounded-3xl bg-bg-light dark:bg-bg-dark border border-gray-200 dark:border-gray-700 card-hover" data-animate>
-                <div class="w-12 h-12 bg-accent-orange/10 rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-accent-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Change History</h3>
-                <p class="text-gray-600 dark:text-gray-300">Track every modification with detailed audit logs. See who changed what and when.</p>
-            </div>
-
-            <!-- Feature Card -->
-            <div class="p-6 rounded-3xl bg-bg-light dark:bg-bg-dark border border-gray-200 dark:border-gray-700 card-hover" data-animate>
-                <div class="w-12 h-12 bg-accent-green/10 rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Smart Filtering</h3>
-                <p class="text-gray-600 dark:text-gray-300">Organize with locations, types, and tags. Find anything instantly.</p>
-            </div>
-
-            <!-- Large Feature Card -->
-            <div class="lg:col-span-2 p-8 rounded-3xl bg-gradient-to-br from-accent-green/10 to-accent-green/5 dark:from-accent-green/20 dark:to-transparent border border-accent-green/20 card-hover" data-animate>
-                <div class="flex flex-col md:flex-row gap-6 items-start">
-                    <div class="w-16 h-16 bg-accent-green rounded-2xl flex items-center justify-center shrink-0">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold mb-2">Offline First, Always Synced</h3>
-                        <p class="text-gray-600 dark:text-gray-300">Works without internet. All changes are stored locally and sync automatically when you're back online. Never lose your data.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- ==================== SCREENSHOTS - ZIG-ZAG LAYOUT ==================== -->
-<section id="screenshots" class="py-24 overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-20" data-animate>
-            <h2 class="text-4xl md:text-5xl font-black">
-                See it in <span class="gradient-text">Action</span>
-            </h2>
-            <p class="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                A beautifully crafted interface designed for speed and simplicity.
-            </p>
-        </div>
-
-        <!-- Zig-zag Feature Rows -->
-        <div class="space-y-24">
-
-            <!-- Row 1: Image Left, Text Right -->
-            <div class="grid lg:grid-cols-2 gap-12 items-center" data-animate>
-                <div class="relative group">
-                    <div class="absolute inset-0 bg-primary/20 rounded-3xl blur-2xl group-hover:bg-primary/30 transition-all duration-500 -z-10"></div>
-                    <img src="assets/images/screenshots/items-page.png" alt="Items Overview" class="rounded-2xl shadow-2xl w-full transform group-hover:scale-[1.02] transition-transform duration-500">
-                </div>
-                <div class="lg:pl-8">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-semibold mb-4">
-                        <span class="w-2 h-2 bg-primary rounded-full"></span>
-                        Core Feature
-                    </div>
-                    <h3 class="text-3xl font-bold mb-4">Complete Item Overview</h3>
-                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                        See your entire inventory at a glance. Each item displays its name, quantity, location, and type—all in a clean, scannable list. Search instantly or tap to dive deeper.
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Real-time search across all items
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Color-coded labels for quick scanning
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Last modified timestamps
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Row 2: Text Left, Image Right -->
-            <div class="grid lg:grid-cols-2 gap-12 items-center" data-animate>
-                <div class="lg:pr-8 order-2 lg:order-1">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent-purple/10 rounded-full text-accent-purple text-sm font-semibold mb-4">
-                        <span class="w-2 h-2 bg-accent-purple rounded-full"></span>
-                        Lightning Fast
-                    </div>
-                    <h3 class="text-3xl font-bold mb-4">QR Code Scanning</h3>
-                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                        Point your camera at any QR code and get instant results. View item details, update quantities, or start a verification session—all in one smooth motion.
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Instant item recognition
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Works offline—no internet needed
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Batch scanning mode available
-                        </li>
-                    </ul>
-                </div>
-                <div class="relative group order-1 lg:order-2">
-                    <div class="absolute inset-0 bg-accent-purple/20 rounded-3xl blur-2xl group-hover:bg-accent-purple/30 transition-all duration-500 -z-10"></div>
-                    <img src="assets/images/screenshots/qr-scanning.png" alt="QR Scanning" class="rounded-2xl shadow-2xl w-full transform group-hover:scale-[1.02] transition-transform duration-500">
-                </div>
-            </div>
-
-            <!-- Row 3: Image Left, Text Right -->
-            <div class="grid lg:grid-cols-2 gap-12 items-center" data-animate>
-                <div class="relative group">
-                    <div class="absolute inset-0 bg-accent-orange/20 rounded-3xl blur-2xl group-hover:bg-accent-orange/30 transition-all duration-500 -z-10"></div>
-                    <img src="assets/images/screenshots/team-management.png" alt="Team Management" class="rounded-2xl shadow-2xl w-full transform group-hover:scale-[1.02] transition-transform duration-500">
-                </div>
-                <div class="lg:pl-8">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent-orange/10 rounded-full text-accent-orange text-sm font-semibold mb-4">
-                        <span class="w-2 h-2 bg-accent-orange rounded-full"></span>
-                        Collaboration
-                    </div>
-                    <h3 class="text-3xl font-bold mb-4">Team Management</h3>
-                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                        Invite your team by email and assign roles. Owners have full control, admins can manage items, and members can view and update. Changes sync instantly across all devices.
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Role-based access control
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Email-based invitations
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Organization activity history
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Row 4: Text Left, Image Right -->
-            <div class="grid lg:grid-cols-2 gap-12 items-center" data-animate>
-                <div class="lg:pr-8 order-2 lg:order-1">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent-green/10 rounded-full text-accent-green text-sm font-semibold mb-4">
-                        <span class="w-2 h-2 bg-accent-green rounded-full"></span>
-                        Audit Trail
-                    </div>
-                    <h3 class="text-3xl font-bold mb-4">Complete Change History</h3>
-                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                        Every modification is logged. See who changed what, when, and what the previous value was. Perfect for audits, accountability, and tracking inventory movements.
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Full audit trail for compliance
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Filter by user, item, or date
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
-                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Before/after value comparison
-                        </li>
-                    </ul>
-                </div>
-                <div class="relative group order-1 lg:order-2">
-                    <div class="absolute inset-0 bg-accent-green/20 rounded-3xl blur-2xl group-hover:bg-accent-green/30 transition-all duration-500 -z-10"></div>
-                    <img src="assets/images/screenshots/history.png" alt="Change History" class="rounded-2xl shadow-2xl w-full transform group-hover:scale-[1.02] transition-transform duration-500">
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Learn more link -->
-        <div class="text-center mt-20" data-animate>
-            <a href="https://doc.janzimola.com/doc/itemee-lxPiTQC2go" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 gradient-bg text-white rounded-xl font-bold hover:shadow-xl hover:shadow-primary/30 transition-all">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                Explore All Features in Documentation
-            </a>
-        </div>
-    </div>
-</section>
-
-
-<!-- ==================== USE CASES ==================== -->
-<section id="use-cases" class="py-24 bg-surface-light dark:bg-surface-dark overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16" data-animate>
-            <h2 class="text-4xl md:text-5xl font-black">
-                Perfect for <span class="gradient-text">Everyone</span>
-            </h2>
-            <p class="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Whether you're managing a home pantry, school equipment, or business inventory
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Home Use Case -->
-            <div class="group relative p-8 rounded-3xl bg-bg-light dark:bg-bg-dark border border-gray-200 dark:border-gray-700 card-hover overflow-hidden" data-animate>
-                <!-- Decorative background -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-accent-orange/10 rounded-full blur-2xl group-hover:bg-accent-orange/20 transition-colors"></div>
-
-                <div class="relative">
-                    <div class="w-16 h-16 bg-accent-orange/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-accent-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                    </div>
-
-                    <h3 class="text-2xl font-bold mb-3">Home</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        Track your pantry, tools, and household items. Never buy duplicates or forget where you stored something.
-                    </p>
-
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-accent-orange rounded-full"></span>
-                            Pantry & food expiration tracking
-                        </li>
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-accent-orange rounded-full"></span>
-                            Tool & equipment location
-                        </li>
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-accent-orange rounded-full"></span>
-                            Moving box contents
-                        </li>
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-accent-orange rounded-full"></span>
-                            Share with family members
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- School Use Case -->
-            <div class="group relative p-8 rounded-3xl bg-bg-light dark:bg-bg-dark border border-gray-200 dark:border-gray-700 card-hover overflow-hidden" data-animate>
-                <!-- Decorative background -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-colors"></div>
-
-                <div class="relative">
-                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
-                    </div>
-
-                    <h3 class="text-2xl font-bold mb-3">School</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        Manage lab equipment, library books, and classroom supplies. Perfect for teachers and administrators.
-                    </p>
-
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                            Lab equipment tracking
-                        </li>
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                            Classroom supplies inventory
-                        </li>
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                            Student checkout system
-                        </li>
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                            Multi-department access
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Business Use Case -->
-            <div class="group relative p-8 rounded-3xl bg-bg-light dark:bg-bg-dark border border-gray-200 dark:border-gray-700 card-hover overflow-hidden" data-animate>
-                <!-- Decorative background -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-accent-green/10 rounded-full blur-2xl group-hover:bg-accent-green/20 transition-colors"></div>
-
-                <div class="relative">
-                    <div class="w-16 h-16 bg-accent-green/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                    </div>
-
-                    <h3 class="text-2xl font-bold mb-3">Business</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        Professional inventory management with team roles, audit trails, and complete change history.
-                    </p>
-
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-accent-green rounded-full"></span>
-                            Complete audit trail
-                        </li>
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-accent-green rounded-full"></span>
-                            Role-based permissions
-                        </li>
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-accent-green rounded-full"></span>
-                            Warehouse organization
-                        </li>
-                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <span class="w-1.5 h-1.5 bg-accent-green rounded-full"></span>
-                            QR label printing
-                        </li>
-                    </ul>
-                </div>
+                <div class="absolute inset-0 bg-accent-orange/10 rounded-3xl -z-10"></div>
+                <img src="assets/images/use-cases/home-pantry.png" alt="Pantry inventory" class="lang-img w-full max-w-5xl group-hover:scale-[1.02] transition-transform duration-500" data-src-en="assets/images/use-cases/home-pantry.png" data-src-cs="assets/images/use-cases/cs/home-pantry.png">
             </div>
         </div>
 
-        <!-- Testimonial/Social proof strip -->
-        <div class="mt-16 text-center" data-animate>
-            <p class="text-gray-500 dark:text-gray-400 text-sm uppercase tracking-wider mb-6">Trusted by users worldwide</p>
-            <div class="flex flex-wrap justify-center gap-8 md:gap-16">
-                <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-black gradient-text counter" data-target="1000">0</div>
-                    <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Active Users</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-black gradient-text counter" data-target="50000">0</div>
-                    <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Items Tracked</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-black gradient-text counter" data-target="200">0</div>
-                    <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Organizations</div>
-                </div>
+        <!-- STORY 2: Organize & Label -->
+        <div class="mb-40" data-animate>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+                    <span data-i18n="story.organize.title1">Organize Items</span>
+                    <span class="gradient-text" data-i18n="story.organize.title2">Your Way</span>
+                </h2>
+                <p class="text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto" data-i18n="story.organize.desc">
+                    Use locations, types, and tags to categorize everything. Filter and find any item in seconds.
+                </p>
+            </div>
+            <div class="relative flex justify-center items-center group">
+                <div class="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl -z-10"></div>
+                <img src="assets/images/desktop/en/organize-labels.png" alt="Organize with labels on Desktop" class="lang-img w-full max-w-6xl rounded-2xl shadow-2xl group-hover:scale-[1.01] transition-transform duration-500" data-src-en="assets/images/desktop/en/organize-labels.png" data-src-cs="assets/images/desktop/cs/organize-labels.png">
             </div>
         </div>
+
+        <!-- STORY 3: Generate & Print QR Labels -->
+        <div class="mb-40" data-animate>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+                    <span data-i18n="story.qr.title1">Generate</span>
+                    <span class="gradient-text" data-i18n="story.qr.title2">QR Labels</span>
+                </h2>
+                <p class="text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto" data-i18n="story.qr.desc">
+                    Print QR codes for your items. Stick them on boxes, shelves, or equipment for instant identification.
+                </p>
+            </div>
+            <div class="relative flex justify-center items-center group">
+                <div class="absolute inset-0 bg-accent-green/20 rounded-3xl blur-3xl -z-10"></div>
+                <img src="assets/images/combined/printing-labels.png" alt="QR Label Printing" class="lang-img w-full max-w-6xl group-hover:scale-[1.02] transition-transform duration-500" data-src-en="assets/images/combined/printing-labels.png" data-src-cs="assets/images/combined/cs/printing-labels.png">
+            </div>
+        </div>
+
+        <!-- STORY 4: Scan to Find Instantly -->
+        <div class="mb-40" data-animate>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+                    <span data-i18n="story.scan.title1">Scan to Find</span>
+                    <span class="gradient-text" data-i18n="story.scan.title2">Instantly</span>
+                </h2>
+                <p class="text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto" data-i18n="story.scan.desc">
+                    Point your camera at any QR code. View details, update quantities, or start verification—all in one motion.
+                </p>
+            </div>
+            <div class="relative flex justify-center items-center group">
+                <div class="absolute inset-0 bg-accent-purple/20 rounded-3xl blur-3xl -z-10"></div>
+                <img src="assets/images/combined/edit-scanning.png" alt="QR Scanning" class="lang-img w-full max-w-5xl group-hover:scale-[1.02] transition-transform duration-500" data-src-en="assets/images/combined/edit-scanning.png" data-src-cs="assets/images/combined/cs/edit-scanning.png">
+            </div>
+        </div>
+
+        <!-- STORY 5: Verification -->
+        <div class="mb-40" data-animate>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+                    <span data-i18n="story.verify.title1">Verify Your</span>
+                    <span class="gradient-text" data-i18n="story.verify.title2">Inventory</span>
+                </h2>
+                <p class="text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto" data-i18n="story.verify.desc">
+                    Run verification sessions to confirm item presence. Mark items as verified or flag missing ones.
+                </p>
+            </div>
+            <div class="relative flex justify-center items-center group">
+                <div class="absolute inset-0 bg-accent-yellow/20 rounded-3xl blur-3xl -z-10"></div>
+                <img src="assets/images/combined/verification.png" alt="Verification" class="w-full max-w-6xl group-hover:scale-[1.02] transition-transform duration-500">
+            </div>
+        </div>
+
+        <!-- STORY 6: Perfect for Work & School -->
+        <div class="mb-40 bg-surface-light dark:bg-surface-dark rounded-3xl p-6 md:p-12" data-animate>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+                    <span data-i18n="story.work.title1">Perfect for</span>
+                    <span class="gradient-text" data-i18n="story.work.title2">Teams & Families</span>
+                </h2>
+                <p class="text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto" data-i18n="story.work.desc">
+                    Collaborate with your family or team. Share inventory across households, manage permissions, and track changes together.
+                </p>
+            </div>
+            <div class="relative flex justify-center items-center group">
+                <img src="assets/images/combined/organization.png" alt="Team Management" class="lang-img w-full max-w-5xl group-hover:scale-[1.02] transition-transform duration-500" data-src-en="assets/images/combined/organization.png" data-src-cs="assets/images/combined/cs/organization.png">
+            </div>
+        </div>
+
+        <!-- STORY 7: See What Changed -->
+        <div class="mb-16" data-animate>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+                    <span data-i18n="story.history.title1">See What</span>
+                    <span class="gradient-text" data-i18n="story.history.title2">Changed</span>
+                </h2>
+                <p class="text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto" data-i18n="story.history.desc">
+                    Every modification is logged. Full audit trail for compliance, accountability, and peace of mind.
+                </p>
+            </div>
+            <div class="relative flex justify-center items-center group">
+                <div class="absolute inset-0 bg-accent-green/20 rounded-3xl blur-3xl -z-10"></div>
+                <img src="assets/images/desktop/en/history.png" alt="Change History on Desktop" class="lang-img w-full max-w-6xl rounded-2xl shadow-2xl group-hover:scale-[1.01] transition-transform duration-500" data-src-en="assets/images/desktop/en/history.png" data-src-cs="assets/images/desktop/cs/history.png">
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -597,7 +356,7 @@
     <div class="max-w-3xl mx-auto px-6">
         <div class="text-center mb-16" data-animate>
             <h2 class="text-4xl md:text-5xl font-black">
-                Common <span class="gradient-text">Questions</span>
+                <span data-i18n="faq.title1">Common</span> <span class="gradient-text" data-i18n="faq.title2">Questions</span>
             </h2>
         </div>
 
@@ -606,52 +365,100 @@
 
             <div class="faq-item bg-bg-light dark:bg-bg-dark rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <button class="faq-toggle w-full p-6 flex items-center justify-between text-left font-bold text-lg">
-                    What is Itemee?
+                    <span data-i18n="faq.q1">What is Itemee?</span>
                     <svg class="faq-chevron w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div class="faq-answer">
-                    <p class="px-6 pb-6 text-gray-600 dark:text-gray-300">Itemee is an inventory management app for individuals, schools, and businesses. Track items with QR codes, organize with labels, and collaborate with your team.</p>
+                    <p class="px-6 pb-6 text-gray-600 dark:text-gray-300" data-i18n="faq.a1">Itemee is an inventory management app for individuals, schools, and businesses. Track items with QR codes, organize with labels, and collaborate with your team.</p>
                 </div>
             </div>
 
             <div class="faq-item bg-bg-light dark:bg-bg-dark rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <button class="faq-toggle w-full p-6 flex items-center justify-between text-left font-bold text-lg">
-                    Is Itemee free?
+                    <span data-i18n="faq.q2">Is Itemee free?</span>
                     <svg class="faq-chevron w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div class="faq-answer">
-                    <p class="px-6 pb-6 text-gray-600 dark:text-gray-300">Yes! Itemee offers a free tier with essential features. Premium plans are available for teams and advanced features.</p>
+                    <p class="px-6 pb-6 text-gray-600 dark:text-gray-300" data-i18n="faq.a2">Yes! Itemee offers a free tier with essential features. Premium plans are available for teams and advanced features.</p>
                 </div>
             </div>
 
             <div class="faq-item bg-bg-light dark:bg-bg-dark rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <button class="faq-toggle w-full p-6 flex items-center justify-between text-left font-bold text-lg">
-                    Does it work offline?
+                    <span data-i18n="faq.q3">Does it work offline?</span>
                     <svg class="faq-chevron w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div class="faq-answer">
-                    <p class="px-6 pb-6 text-gray-600 dark:text-gray-300">Absolutely! Itemee is offline-first. All data is stored locally and syncs automatically when you reconnect.</p>
+                    <p class="px-6 pb-6 text-gray-600 dark:text-gray-300" data-i18n="faq.a3">Absolutely! Itemee is offline-first. All data is stored locally and syncs automatically when you reconnect.</p>
                 </div>
             </div>
 
             <div class="faq-item bg-bg-light dark:bg-bg-dark rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <button class="faq-toggle w-full p-6 flex items-center justify-between text-left font-bold text-lg">
-                    Which platforms are supported?
+                    <span data-i18n="faq.q4">Which platforms are supported?</span>
                     <svg class="faq-chevron w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div class="faq-answer">
-                    <p class="px-6 pb-6 text-gray-600 dark:text-gray-300">Itemee is available on iOS, Android, and Windows. Your data syncs across all devices.</p>
+                    <p class="px-6 pb-6 text-gray-600 dark:text-gray-300" data-i18n="faq.a4">Itemee is available on iOS and macOS. The iOS app also runs natively on Mac with Apple Silicon. Your data syncs across all devices.</p>
                 </div>
             </div>
 
             <div class="faq-item bg-bg-light dark:bg-bg-dark rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <button class="faq-toggle w-full p-6 flex items-center justify-between text-left font-bold text-lg">
-                    Can I collaborate with my team?
+                    <span data-i18n="faq.q5">Can I collaborate with my team?</span>
                     <svg class="faq-chevron w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div class="faq-answer">
-                    <p class="px-6 pb-6 text-gray-600 dark:text-gray-300">Yes! Create organizations, invite team members with different roles, and collaborate in real-time.</p>
+                    <p class="px-6 pb-6 text-gray-600 dark:text-gray-300" data-i18n="faq.a5">Yes! Create organizations, invite team members with different roles, and collaborate in real-time.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ==================== WORKS EVERYWHERE ==================== -->
+<section class="py-16 bg-surface-light dark:bg-surface-dark">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12" data-animate>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+                <span data-i18n="platforms.title1">Works on</span>
+                <span class="gradient-text" data-i18n="platforms.title2">All Your Devices</span>
+            </h2>
+            <p class="text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto" data-i18n="platforms.desc">
+                Start on your phone, continue on your computer. Your inventory stays in sync everywhere.
+            </p>
+        </div>
+
+        <!-- Device showcase with overlapping images -->
+        <div class="relative flex justify-center items-center min-h-[400px] md:min-h-[550px] lg:min-h-[700px]" data-animate>
+            <div class="absolute inset-0 bg-primary/10 rounded-3xl blur-3xl -z-10"></div>
+
+            <!-- Desktop in center/back -->
+            <div class="relative z-10 w-full max-w-3xl mx-auto">
+                <img src="assets/images/desktop/en/hero.png" alt="Desktop App" class="lang-img w-full rounded-xl shadow-2xl" data-src-en="assets/images/desktop/en/hero.png" data-src-cs="assets/images/desktop/cs/hero.png">
+            </div>
+
+            <!-- Tablet floating on left - with white border -->
+            <div class="absolute -left-12 md:-left-8 lg:-left-4 top-1/2 -translate-y-1/2 z-20 w-56 md:w-80 lg:w-[420px] hidden sm:block">
+                <img src="assets/images/tablet/en/home-pantry.png" alt="Tablet App" class="lang-img rounded-xl shadow-2xl shadow-black/30 border-4 border-white dark:border-gray-800" data-src-en="assets/images/tablet/en/home-pantry.png" data-src-cs="assets/images/tablet/cs/home-pantry.png">
+            </div>
+
+            <!-- Mobile floating above desktop - centered and overlapping top -->
+            <div class="absolute right-8 md:right-16 lg:right-24 -top-8 md:-top-12 lg:-top-16 z-20 w-40 md:w-56 lg:w-72">
+                <img src="assets/images/use-cases/home-pantry.png" alt="Mobile App" class="lang-img rounded-2xl shadow-2xl shadow-black/30" data-src-en="assets/images/use-cases/home-pantry.png" data-src-cs="assets/images/use-cases/cs/home-pantry.png">
+            </div>
+        </div>
+
+        <!-- Platform icons -->
+        <div class="flex justify-center gap-8 mt-12" data-animate>
+            <div class="flex flex-col items-center gap-2 text-gray-500 dark:text-gray-400">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                <span class="text-sm font-semibold">iOS</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 text-gray-500 dark:text-gray-400">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                <span class="text-sm font-semibold">macOS</span>
             </div>
         </div>
     </div>
@@ -660,55 +467,112 @@
 
 <!-- ==================== DOWNLOAD CTA ==================== -->
 <section id="download" class="py-24">
-    <div class="max-w-4xl mx-auto px-6">
-        <div class="gradient-bg rounded-3xl p-12 md:p-16 text-center relative overflow-hidden" data-animate>
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="gradient-bg rounded-3xl p-12 md:p-16 relative overflow-hidden" data-animate>
             <!-- Background decoration -->
             <div class="absolute inset-0 opacity-10">
                 <div class="absolute top-0 left-0 w-40 h-40 bg-white rounded-full blur-3xl"></div>
                 <div class="absolute bottom-0 right-0 w-60 h-60 bg-white rounded-full blur-3xl"></div>
             </div>
 
-            <div class="relative">
-                <h2 class="text-4xl md:text-5xl font-black text-white mb-4">
-                    Ready to Get Organized?
-                </h2>
-                <p class="text-xl text-white/80 mb-10 max-w-lg mx-auto">
-                    Download Itemee free and take control of your inventory today.
-                </p>
+            <div class="relative grid md:grid-cols-2 gap-8 items-center">
+                <!-- Left: Text and buttons -->
+                <div class="text-center md:text-left">
+                    <h2 class="text-4xl md:text-5xl font-black text-white mb-4" data-i18n="download.title">
+                        Ready to Get Organized?
+                    </h2>
+                    <p class="text-xl text-white/80 mb-8" data-i18n="download.subtitle">
+                        Download Itemee free and take control of your inventory today.
+                    </p>
 
-                <!-- Store Buttons -->
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#" class="group flex items-center gap-3 bg-black/30 hover:bg-black/50 backdrop-blur px-6 py-4 rounded-xl transition-all">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-                        <div class="text-left text-white">
-                            <div class="text-xs opacity-80">Download on the</div>
-                            <div class="text-lg font-bold -mt-1">App Store</div>
-                        </div>
-                    </a>
+                    <!-- Store Buttons -->
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                        <a href="#" class="group flex items-center gap-3 bg-black/30 hover:bg-black/50 backdrop-blur px-5 py-3 rounded-xl transition-all">
+                            <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                            <div class="text-left text-white">
+                                <div class="text-xs opacity-80">App Store</div>
+                                <div class="text-base font-bold -mt-1">iOS</div>
+                            </div>
+                        </a>
 
-                    <a href="#" class="group flex items-center gap-3 bg-black/30 hover:bg-black/50 backdrop-blur px-6 py-4 rounded-xl transition-all">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
-                        <div class="text-left text-white">
-                            <div class="text-xs opacity-80">Get it on</div>
-                            <div class="text-lg font-bold -mt-1">Google Play</div>
-                        </div>
-                    </a>
+                        <a href="#" class="group flex items-center gap-3 bg-black/30 hover:bg-black/50 backdrop-blur px-5 py-3 rounded-xl transition-all">
+                            <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                            <div class="text-left text-white">
+                                <div class="text-xs opacity-80">Mac App Store</div>
+                                <div class="text-base font-bold -mt-1">macOS</div>
+                            </div>
+                        </a>
+                    </div>
 
-                    <a href="#" class="group flex items-center gap-3 bg-black/30 hover:bg-black/50 backdrop-blur px-6 py-4 rounded-xl transition-all">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
-                        <div class="text-left text-white">
-                            <div class="text-xs opacity-80">Get it from</div>
-                            <div class="text-lg font-bold -mt-1">Microsoft</div>
-                        </div>
+                    <a href="https://doc.janzimola.com/doc/itemee-lxPiTQC2go" target="_blank" class="inline-flex items-center gap-2 mt-6 text-white/80 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        <span data-i18n="download.docs">View Documentation</span>
                     </a>
                 </div>
 
-                <a href="https://doc.janzimola.com/doc/itemee-lxPiTQC2go" target="_blank" class="inline-flex items-center gap-2 mt-8 text-white/80 hover:text-white transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                    View Documentation
-                </a>
+                <!-- Right: Illustration -->
+                <div class="hidden md:flex justify-center">
+                    <img src="assets/images/illustrations/To-Do App Illustration.svg" alt="Get organized" class="w-full max-w-xs opacity-90">
+                </div>
             </div>
         </div>
+    </div>
+</section>
+
+
+<!-- ==================== CONTACT ==================== -->
+<section id="contact" class="py-24 bg-surface-light dark:bg-surface-dark">
+    <div class="max-w-2xl mx-auto px-6">
+        <div class="text-center mb-12" data-animate>
+            <h2 class="text-4xl md:text-5xl font-black">
+                <span data-i18n="contact.title1">Get in</span> <span class="gradient-text" data-i18n="contact.title2">Touch</span>
+            </h2>
+            <p class="mt-4 text-gray-600 dark:text-gray-300" data-i18n="contact.subtitle">
+                Have a question or feedback? We'd love to hear from you.
+            </p>
+        </div>
+
+        <form id="contact-form" class="space-y-6" data-animate>
+            <div>
+                <label for="email" class="block text-sm font-semibold mb-2" data-i18n="contact.emailLabel">Your Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-bg-dark focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                    placeholder="you@example.com"
+                >
+            </div>
+
+            <div>
+                <label for="message" class="block text-sm font-semibold mb-2" data-i18n="contact.messageLabel">Message</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                    class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-bg-dark focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
+                    data-i18n-placeholder="contact.messagePlaceholder"
+                    placeholder="Your message..."
+                ></textarea>
+            </div>
+
+            <button
+                type="submit"
+                class="w-full py-4 gradient-bg text-white font-bold rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all flex items-center justify-center gap-2"
+            >
+                <span data-i18n="contact.send">Send Message</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+            </button>
+
+            <p id="form-status" class="text-center text-sm hidden"></p>
+        </form>
+
+        <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
+            <span data-i18n="contact.or">Or email us directly at</span>
+            <a href="mailto:support@janzimola.com" class="text-primary hover:underline">support@janzimola.com</a>
+        </p>
     </div>
 </section>
 
@@ -722,9 +586,10 @@
         </a>
 
         <div class="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
-            <a href="https://doc.janzimola.com/doc/itemee-lxPiTQC2go" target="_blank" class="hover:text-primary transition-colors">Docs</a>
-            <a href="privacy.html" class="hover:text-primary transition-colors">Privacy</a>
-            <a href="terms.html" class="hover:text-primary transition-colors">Terms</a>
+            <a href="https://doc.janzimola.com/doc/itemee-lxPiTQC2go" target="_blank" class="hover:text-primary transition-colors" data-i18n="footer.docs">Docs</a>
+            <a href="privacy.html" class="hover:text-primary transition-colors" data-i18n="footer.privacy">Privacy</a>
+            <a href="terms.html" class="hover:text-primary transition-colors" data-i18n="footer.terms">Terms</a>
+            <a href="mailto:support@janzimola.com" class="hover:text-primary transition-colors" data-i18n="footer.contact">Contact</a>
         </div>
 
         <div class="text-sm text-gray-500 dark:text-gray-400">
@@ -871,6 +736,414 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 nav.style.transition = 'transform 0.3s ease';
+
+// ==================== TRANSLATIONS ====================
+const translations = {
+    en: {
+        // Navigation
+        'nav.features': 'Features',
+        'nav.screenshots': 'Screenshots',
+        'nav.useCases': 'Use Cases',
+        'nav.faq': 'FAQ',
+        'nav.download': 'Download',
+
+        // Hero
+        'hero.badge': 'Now available on all platforms',
+        'hero.title1': 'Bring Order to Your',
+        'hero.title2': 'Inventory',
+        'hero.subtitle': 'Perfect for Families, Schools & Businesses. Track items with QR codes, share with your household, and stay organized together.',
+        'hero.ctaStart': 'Get Started Free',
+        'hero.ctaDocs': 'Documentation',
+        'hero.badgeOffline': 'Offline First',
+        'hero.qrTitle': 'QR Scanning',
+        'hero.qrSubtitle': 'Instant lookup',
+
+        // Features
+        'features.title1': 'Powerful',
+        'features.title2': 'Features',
+        'features.subtitle': 'Everything you need to manage your inventory efficiently',
+        'features.qr.title': 'QR Code Scanning & Printing',
+        'features.qr.desc': 'Generate unique QR codes for each item. Scan to instantly view details, update quantities, or verify inventory. Print labels for physical organization.',
+        'features.team.title': 'Team Collaboration',
+        'features.team.desc': 'Invite members with roles. Changes sync in real-time across your organization.',
+        'features.history.title': 'Change History',
+        'features.history.desc': 'Track every modification with detailed audit logs. See who changed what and when.',
+        'features.filter.title': 'Smart Filtering',
+        'features.filter.desc': 'Organize with locations, types, and tags. Find anything instantly.',
+        'features.offline.title': 'Offline First, Always Synced',
+        'features.offline.desc': 'Works without internet. All changes are stored locally and sync automatically when you\'re back online. Never lose your data.',
+
+        // Screenshots
+        'screenshots.title1': 'See it in',
+        'screenshots.title2': 'Action',
+        'screenshots.subtitle': 'A beautifully crafted interface designed for speed and simplicity.',
+        'screenshots.items.badge': 'Core Feature',
+        'screenshots.items.title': 'Complete Item Overview',
+        'screenshots.items.desc': 'See your entire inventory at a glance. Each item displays its name, quantity, location, and type—all in a clean, scannable list. Search instantly or tap to dive deeper.',
+        'screenshots.items.feature1': 'Real-time search across all items',
+        'screenshots.items.feature2': 'Color-coded labels for quick scanning',
+        'screenshots.items.feature3': 'Last modified timestamps',
+        'screenshots.qr.badge': 'Lightning Fast',
+        'screenshots.qr.title': 'QR Code Scanning',
+        'screenshots.qr.desc': 'Point your camera at any QR code and get instant results. View item details, update quantities, or start a verification session—all in one smooth motion.',
+        'screenshots.qr.feature1': 'Instant item recognition',
+        'screenshots.qr.feature2': 'Works offline—no internet needed',
+        'screenshots.qr.feature3': 'Batch scanning mode available',
+        'screenshots.team.badge': 'Collaboration',
+        'screenshots.team.title': 'Team Management',
+        'screenshots.team.desc': 'Invite your team by email and assign roles. Owners have full control, admins can manage items, and members can view and update. Changes sync instantly across all devices.',
+        'screenshots.team.feature1': 'Role-based access control',
+        'screenshots.team.feature2': 'Email-based invitations',
+        'screenshots.team.feature3': 'Organization activity history',
+        'screenshots.history.badge': 'Audit Trail',
+        'screenshots.history.title': 'Complete Change History',
+        'screenshots.history.desc': 'Every modification is logged. See who changed what, when, and what the previous value was. Perfect for audits, accountability, and tracking inventory movements.',
+        'screenshots.history.feature1': 'Full audit trail for compliance',
+        'screenshots.history.feature2': 'Filter by user, item, or date',
+        'screenshots.history.feature3': 'Before/after value comparison',
+
+        // Use Cases
+        'useCases.title1': 'Perfect for',
+        'useCases.title2': 'Everyone',
+        'useCases.subtitle': 'Whether you\'re managing a home pantry, school equipment, or business inventory',
+        'useCases.home.badge': 'For Families',
+        'useCases.home.title': 'Home & Household',
+        'useCases.home.desc': 'Track your pantry, tools, and household items. Never buy duplicates or forget where you stored something. Share access with family members.',
+        'useCases.home.feature1': 'Pantry & food expiration tracking',
+        'useCases.home.feature2': 'Tool & equipment location',
+        'useCases.home.feature3': 'Moving box contents & storage',
+        'useCases.home.feature4': 'Share with family members',
+        'useCases.school.badge': 'For Education',
+        'useCases.school.title': 'Schools & Labs',
+        'useCases.school.desc': 'Manage lab equipment, library books, and classroom supplies. Filter by class, department, or verification status. Perfect for teachers and administrators.',
+        'useCases.school.feature1': 'Lab equipment tracking',
+        'useCases.school.feature2': 'Classroom supplies inventory',
+        'useCases.school.feature3': 'Verification & checkout system',
+        'useCases.school.feature4': 'Multi-department access',
+        'useCases.business.badge': 'For Teams',
+        'useCases.business.title': 'Business & Enterprise',
+        'useCases.business.desc': 'Professional inventory management with team roles, audit trails, and complete change history. Print QR labels for physical organization and fast scanning.',
+        'useCases.business.feature1': 'Complete audit trail',
+        'useCases.business.feature2': 'Role-based permissions',
+        'useCases.business.feature3': 'Warehouse organization',
+        'useCases.business.feature4': 'QR label printing',
+
+        // FAQ
+        'faq.title1': 'Common',
+        'faq.title2': 'Questions',
+        'faq.q1': 'What is Itemee?',
+        'faq.a1': 'Itemee is an inventory management app for families, schools, and businesses. Track items with QR codes, organize with labels, and share with your household or team.',
+        'faq.q2': 'Is Itemee free?',
+        'faq.a2': 'Yes! Itemee offers a free tier with essential features. Premium plans are available for teams and advanced features.',
+        'faq.q3': 'Does it work offline?',
+        'faq.a3': 'Absolutely! Itemee is offline-first. All data is stored locally and syncs automatically when you reconnect.',
+        'faq.q4': 'Which platforms are supported?',
+        'faq.a4': 'Itemee is available on iOS and macOS. The iOS app also runs natively on Mac with Apple Silicon. Your data syncs across all devices.',
+        'faq.q5': 'Can I collaborate with my team?',
+        'faq.a5': 'Yes! Create organizations, invite team members with different roles, and collaborate in real-time.',
+
+        // Download
+        'download.title': 'Ready to Get Organized?',
+        'download.subtitle': 'Download Itemee free and take control of your inventory today.',
+        'download.docs': 'View Documentation',
+
+        // Footer
+        'footer.docs': 'Docs',
+        'footer.privacy': 'Privacy',
+        'footer.terms': 'Terms',
+        'footer.contact': 'Contact',
+
+        // Contact Form
+        'contact.title1': 'Get in',
+        'contact.title2': 'Touch',
+        'contact.subtitle': 'Have a question or feedback? We\'d love to hear from you.',
+        'contact.emailLabel': 'Your Email',
+        'contact.messageLabel': 'Message',
+        'contact.messagePlaceholder': 'Your message...',
+        'contact.send': 'Send Message',
+        'contact.or': 'Or email us directly at',
+        'contact.sending': 'Sending...',
+        'contact.success': 'Message sent successfully! We\'ll get back to you soon.',
+        'contact.error': 'Failed to send message. Please try again or email us directly.',
+        'contact.rateLimit': 'Too many requests. Please wait a moment and try again.',
+
+        // Story Flow
+        'story.home.title1': 'Bring Order to',
+        'story.home.title2': 'Your Home',
+        'story.home.desc': 'Track your pantry, tools, and household items. Never buy duplicates or forget where you stored something.',
+        'story.organize.title1': 'Organize Items',
+        'story.organize.title2': 'Your Way',
+        'story.organize.desc': 'Use locations, types, and tags to categorize everything. Filter and find any item in seconds.',
+        'story.qr.title1': 'Generate',
+        'story.qr.title2': 'QR Labels',
+        'story.qr.desc': 'Print QR codes for your items. Stick them on boxes, shelves, or equipment for instant identification.',
+        'story.scan.title1': 'Scan to Find',
+        'story.scan.title2': 'Instantly',
+        'story.scan.desc': 'Point your camera at any QR code. View details, update quantities, or start verification—all in one motion.',
+        'story.work.title1': 'Perfect for',
+        'story.work.title2': 'Teams & Families',
+        'story.work.desc': 'Collaborate with your family or team. Share inventory across households, manage permissions, and track changes together.',
+        'story.history.title1': 'See What',
+        'story.history.title2': 'Changed',
+        'story.history.desc': 'Every modification is logged. Full audit trail for compliance, accountability, and peace of mind.',
+        'story.verify.title1': 'Verify Your',
+        'story.verify.title2': 'Inventory',
+        'story.verify.desc': 'Run verification sessions to confirm item presence. Mark items as verified or flag missing ones.',
+
+        // Platforms
+        'platforms.title1': 'Works on',
+        'platforms.title2': 'All Your Devices',
+        'platforms.desc': 'Start on your phone, continue on your computer. Your inventory stays in sync everywhere.'
+    },
+    cs: {
+        // Navigation
+        'nav.features': 'Funkce',
+        'nav.screenshots': 'Ukázky',
+        'nav.useCases': 'Použití',
+        'nav.faq': 'Časté dotazy',
+        'nav.download': 'Stáhnout',
+
+        // Hero
+        'hero.badge': 'Nyní dostupné na všech platformách',
+        'hero.title1': 'Vneste pořádek do svého',
+        'hero.title2': 'Inventáře',
+        'hero.subtitle': 'Ideální pro rodiny, školy i firmy. Sledujte položky pomocí QR kódů, sdílejte s domácností a udržujte pořádek společně.',
+        'hero.ctaStart': 'Začít zdarma',
+        'hero.ctaDocs': 'Dokumentace',
+        'hero.badgeOffline': 'Funguje offline',
+        'hero.qrTitle': 'QR skenování',
+        'hero.qrSubtitle': 'Okamžité vyhledání',
+
+        // Features
+        'features.title1': 'Výkonné',
+        'features.title2': 'Funkce',
+        'features.subtitle': 'Vše, co potřebujete pro efektivní správu inventáře',
+        'features.qr.title': 'Skenování a tisk QR kódů',
+        'features.qr.desc': 'Generujte unikátní QR kódy pro každou položku. Skenujte pro okamžité zobrazení detailů, aktualizaci množství nebo ověření inventáře. Tiskněte štítky pro fyzickou organizaci.',
+        'features.team.title': 'Týmová spolupráce',
+        'features.team.desc': 'Zvěte členy s různými rolemi. Změny se synchronizují v reálném čase napříč vaší organizací.',
+        'features.history.title': 'Historie změn',
+        'features.history.desc': 'Sledujte každou změnu s podrobnými audit logy. Zjistěte, kdo co a kdy změnil.',
+        'features.filter.title': 'Chytré filtrování',
+        'features.filter.desc': 'Organizujte pomocí umístění, typů a štítků. Najděte cokoliv okamžitě.',
+        'features.offline.title': 'Offline first, vždy synchronizováno',
+        'features.offline.desc': 'Funguje bez internetu. Všechny změny se ukládají lokálně a automaticky synchronizují, jakmile jste zpět online. Nikdy neztratíte svá data.',
+
+        // Screenshots
+        'screenshots.title1': 'Podívejte se',
+        'screenshots.title2': 'v akci',
+        'screenshots.subtitle': 'Krásně navržené rozhraní optimalizované pro rychlost a jednoduchost.',
+        'screenshots.items.badge': 'Hlavní funkce',
+        'screenshots.items.title': 'Kompletní přehled položek',
+        'screenshots.items.desc': 'Zobrazte celý svůj inventář najednou. Každá položka zobrazuje název, množství, umístění a typ—vše v čistém, přehledném seznamu. Vyhledávejte okamžitě nebo klepněte pro podrobnosti.',
+        'screenshots.items.feature1': 'Vyhledávání v reálném čase',
+        'screenshots.items.feature2': 'Barevně odlišené štítky',
+        'screenshots.items.feature3': 'Časové razítko poslední úpravy',
+        'screenshots.qr.badge': 'Bleskově rychlé',
+        'screenshots.qr.title': 'Skenování QR kódů',
+        'screenshots.qr.desc': 'Namiřte fotoaparát na jakýkoliv QR kód a získejte okamžité výsledky. Zobrazte detaily položky, aktualizujte množství nebo spusťte ověřovací relaci—vše jedním plynulým pohybem.',
+        'screenshots.qr.feature1': 'Okamžité rozpoznání položky',
+        'screenshots.qr.feature2': 'Funguje offline—není potřeba internet',
+        'screenshots.qr.feature3': 'Dostupný režim hromadného skenování',
+        'screenshots.team.badge': 'Spolupráce',
+        'screenshots.team.title': 'Správa týmu',
+        'screenshots.team.desc': 'Zvěte svůj tým e-mailem a přidělujte role. Vlastníci mají plnou kontrolu, správci mohou spravovat položky a členové mohou zobrazovat a aktualizovat. Změny se okamžitě synchronizují napříč všemi zařízeními.',
+        'screenshots.team.feature1': 'Řízení přístupu podle rolí',
+        'screenshots.team.feature2': 'Pozvánky e-mailem',
+        'screenshots.team.feature3': 'Historie aktivit organizace',
+        'screenshots.history.badge': 'Audit trasa',
+        'screenshots.history.title': 'Kompletní historie změn',
+        'screenshots.history.desc': 'Každá úprava je zaznamenána. Zjistěte, kdo co změnil, kdy a jaká byla předchozí hodnota. Ideální pro audity, odpovědnost a sledování pohybu inventáře.',
+        'screenshots.history.feature1': 'Kompletní audit trasa pro compliance',
+        'screenshots.history.feature2': 'Filtrování podle uživatele, položky nebo data',
+        'screenshots.history.feature3': 'Porovnání hodnot před a po',
+
+        // Use Cases
+        'useCases.title1': 'Ideální pro',
+        'useCases.title2': 'každého',
+        'useCases.subtitle': 'Ať už spravujete domácí spíž, školní vybavení nebo firemní inventář',
+        'useCases.home.badge': 'Pro rodiny',
+        'useCases.home.title': 'Domácnost',
+        'useCases.home.desc': 'Sledujte spíž, nářadí a domácí potřeby. Nekupujte zbytečně duplikáty a nezapomeňte, kam jste co uložili. Sdílejte přístup s rodinou.',
+        'useCases.home.feature1': 'Sledování spíže a expirace potravin',
+        'useCases.home.feature2': 'Umístění nářadí a vybavení',
+        'useCases.home.feature3': 'Obsah stěhovacích krabic a skladu',
+        'useCases.home.feature4': 'Sdílení s členy rodiny',
+        'useCases.school.badge': 'Pro vzdělávání',
+        'useCases.school.title': 'Školy a laboratoře',
+        'useCases.school.desc': 'Spravujte laboratorní vybavení, knihy a školní potřeby. Filtrujte podle třídy, oddělení nebo stavu ověření. Ideální pro učitele a správce.',
+        'useCases.school.feature1': 'Sledování laboratorního vybavení',
+        'useCases.school.feature2': 'Inventář školních potřeb',
+        'useCases.school.feature3': 'Systém ověření a výpůjček',
+        'useCases.school.feature4': 'Přístup pro více oddělení',
+        'useCases.business.badge': 'Pro týmy',
+        'useCases.business.title': 'Firmy a podniky',
+        'useCases.business.desc': 'Profesionální správa inventáře s týmovými rolemi, audit trasou a kompletní historií změn. Tiskněte QR štítky pro fyzickou organizaci a rychlé skenování.',
+        'useCases.business.feature1': 'Kompletní audit trasa',
+        'useCases.business.feature2': 'Oprávnění podle rolí',
+        'useCases.business.feature3': 'Organizace skladu',
+        'useCases.business.feature4': 'Tisk QR štítků',
+
+        // FAQ
+        'faq.title1': 'Časté',
+        'faq.title2': 'dotazy',
+        'faq.q1': 'Co je Itemee?',
+        'faq.a1': 'Itemee je aplikace pro správu inventáře pro rodiny, školy a firmy. Sledujte položky pomocí QR kódů, organizujte pomocí štítků a sdílejte s domácností nebo týmem.',
+        'faq.q2': 'Je Itemee zdarma?',
+        'faq.a2': 'Ano! Itemee nabízí bezplatnou verzi se základními funkcemi. Prémiové plány jsou k dispozici pro týmy a pokročilé funkce.',
+        'faq.q3': 'Funguje offline?',
+        'faq.a3': 'Rozhodně! Itemee je offline-first. Všechna data se ukládají lokálně a automaticky se synchronizují, když se znovu připojíte.',
+        'faq.q4': 'Které platformy jsou podporovány?',
+        'faq.a4': 'Itemee je k dispozici na iOS a macOS. iOS aplikace běží nativně i na Macu s Apple Silicon. Vaše data se synchronizují na všech zařízeních.',
+        'faq.q5': 'Můžu spolupracovat se svým týmem?',
+        'faq.a5': 'Ano! Vytvářejte organizace, zvěte členy týmu s různými rolemi a spolupracujte v reálném čase.',
+
+        // Download
+        'download.title': 'Připraveni na pořádek?',
+        'download.subtitle': 'Stáhněte Itemee zdarma a převezměte kontrolu nad svým inventářem ještě dnes.',
+        'download.docs': 'Zobrazit dokumentaci',
+
+        // Footer
+        'footer.docs': 'Dokumentace',
+        'footer.privacy': 'Soukromí',
+        'footer.terms': 'Podmínky',
+        'footer.contact': 'Kontakt',
+
+        // Contact Form
+        'contact.title1': 'Kontaktujte',
+        'contact.title2': 'nás',
+        'contact.subtitle': 'Máte otázku nebo zpětnou vazbu? Rádi vám odpovíme.',
+        'contact.emailLabel': 'Váš email',
+        'contact.messageLabel': 'Zpráva',
+        'contact.messagePlaceholder': 'Vaše zpráva...',
+        'contact.send': 'Odeslat zprávu',
+        'contact.or': 'Nebo nám napište přímo na',
+        'contact.sending': 'Odesílání...',
+        'contact.success': 'Zpráva byla úspěšně odeslána! Brzy se vám ozveme.',
+        'contact.error': 'Nepodařilo se odeslat zprávu. Zkuste to znovu nebo nám napište přímo.',
+        'contact.rateLimit': 'Příliš mnoho požadavků. Chvíli počkejte a zkuste to znovu.',
+
+        // Story Flow
+        'story.home.title1': 'Vneste pořádek do',
+        'story.home.title2': 'své domácnosti',
+        'story.home.desc': 'Sledujte spíž, nářadí a domácí potřeby. Nekupujte zbytečně duplikáty a nezapomeňte, kam jste co uložili.',
+        'story.organize.title1': 'Organizujte položky',
+        'story.organize.title2': 'po svém',
+        'story.organize.desc': 'Používejte umístění, typy a štítky ke kategorizaci všeho. Filtrujte a najděte cokoliv během sekund.',
+        'story.qr.title1': 'Generujte',
+        'story.qr.title2': 'QR štítky',
+        'story.qr.desc': 'Tiskněte QR kódy pro své položky. Nalepte je na krabice, police nebo vybavení pro okamžitou identifikaci.',
+        'story.scan.title1': 'Skenujte a najděte',
+        'story.scan.title2': 'okamžitě',
+        'story.scan.desc': 'Namiřte fotoaparát na jakýkoliv QR kód. Zobrazte detaily, aktualizujte množství nebo spusťte ověření—vše jedním pohybem.',
+        'story.work.title1': 'Ideální pro',
+        'story.work.title2': 'týmy a rodiny',
+        'story.work.desc': 'Spolupracujte s rodinou nebo týmem. Sdílejte inventář napříč domácnostmi, spravujte oprávnění a sledujte změny společně.',
+        'story.history.title1': 'Podívejte se, co se',
+        'story.history.title2': 'změnilo',
+        'story.history.desc': 'Každá úprava je zaznamenána. Kompletní audit trasa pro compliance, odpovědnost a klid mysli.',
+        'story.verify.title1': 'Ověřte svůj',
+        'story.verify.title2': 'inventář',
+        'story.verify.desc': 'Spusťte ověřovací relace pro potvrzení přítomnosti položek. Označte ověřené nebo chybějící položky.',
+
+        // Platforms
+        'platforms.title1': 'Funguje na',
+        'platforms.title2': 'všech zařízeních',
+        'platforms.desc': 'Začněte na telefonu, pokračujte na počítači. Váš inventář zůstává synchronizovaný všude.'
+    }
+};
+
+// Language Switching
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+
+    // Update all translatable elements
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
+    });
+
+    // Update language-specific images
+    document.querySelectorAll('.lang-img').forEach(img => {
+        const src = img.getAttribute('data-src-' + lang);
+        if (src) {
+            img.src = src;
+        }
+    });
+
+    // Update toggle button label
+    document.getElementById('lang-label').textContent = lang.toUpperCase();
+}
+
+// Toggle between languages
+document.getElementById('lang-toggle').addEventListener('click', () => {
+    setLanguage(currentLang === 'en' ? 'cs' : 'en');
+});
+
+// Initialize language on page load
+setLanguage(currentLang);
+
+// ==================== CONTACT FORM ====================
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+const API_URL = 'https://api.janzimola.com';
+
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const submitText = submitBtn.querySelector('span');
+    const originalText = submitText.textContent;
+
+    // Show loading state
+    submitBtn.disabled = true;
+    submitText.textContent = translations[currentLang]['contact.sending'] || 'Sending...';
+
+    // Hide previous status
+    formStatus.classList.add('hidden');
+
+    try {
+        const response = await fetch(`${API_URL}/contact`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value,
+            }),
+        });
+
+        const data = await response.json();
+
+        if (response.status === 429) {
+            // Rate limited
+            formStatus.textContent = translations[currentLang]['contact.rateLimit'] || 'Too many requests. Please wait a moment and try again.';
+            formStatus.className = 'text-center text-sm text-red-500';
+        } else if (data.success) {
+            formStatus.textContent = translations[currentLang]['contact.success'] || 'Message sent successfully!';
+            formStatus.className = 'text-center text-sm text-green-500';
+            contactForm.reset();
+        } else {
+            formStatus.textContent = data.message || translations[currentLang]['contact.error'] || 'Failed to send message.';
+            formStatus.className = 'text-center text-sm text-red-500';
+        }
+    } catch (error) {
+        console.error('Contact form error:', error);
+        formStatus.textContent = translations[currentLang]['contact.error'] || 'Failed to send message. Please try again.';
+        formStatus.className = 'text-center text-sm text-red-500';
+    } finally {
+        formStatus.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitText.textContent = originalText;
+    }
+});
 </script>
 
 </body>
