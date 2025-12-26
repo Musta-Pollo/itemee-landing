@@ -43,6 +43,8 @@
                         fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
                         scaleIn: { '0%': { opacity: '0', transform: 'scale(0.9)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
                         bounceSub: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-5px)' } },
+                        pulse: { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0.5' } },
+                        wiggle: { '0%, 100%': { transform: 'rotate(-3deg)' }, '50%': { transform: 'rotate(3deg)' } },
                     }
                 }
             }
@@ -53,16 +55,53 @@
         .gradient-text { background: linear-gradient(135deg, #5155D1 0%, #8E92FE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .gradient-bg { background: linear-gradient(135deg, #5155D1 0%, #3C40AF 50%, #1B1D6B 100%); }
         .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-        .card-hover { transition: all 0.3s ease; }
+        .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .card-hover:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 25px 50px -12px rgba(81, 85, 209, 0.25); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
         .faq-item.active .faq-answer { max-height: 300px; }
         .faq-item.active .faq-chevron { transform: rotate(180deg); }
-        .blob { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-        [data-animate] { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .blob { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; animation: morph 8s ease-in-out infinite; }
+        @keyframes morph { 0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; } }
+
+        /* Scroll reveal animations */
+        [data-animate] { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         [data-animate].visible { opacity: 1; transform: translateY(0); }
-        .screenshot-tilt { transform: perspective(1000px) rotateY(-5deg); transition: transform 0.5s ease; }
-        .screenshot-tilt:hover { transform: perspective(1000px) rotateY(0deg); }
+        [data-animate-left] { opacity: 0; transform: translateX(-60px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        [data-animate-left].visible { opacity: 1; transform: translateX(0); }
+        [data-animate-right] { opacity: 0; transform: translateX(60px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        [data-animate-right].visible { opacity: 1; transform: translateX(0); }
+        [data-animate-scale] { opacity: 0; transform: scale(0.8); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        [data-animate-scale].visible { opacity: 1; transform: scale(1); }
+
+        /* Stagger children */
+        .stagger-children > * { opacity: 0; transform: translateY(20px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .stagger-children.visible > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+
+        /* Parallax effect */
+        .parallax { transition: transform 0.1s linear; }
+
+        /* Magnetic button effect */
+        .magnetic { transition: transform 0.3s ease-out; }
+
+        /* Glow pulse */
+        .glow-pulse { animation: glowPulse 2s ease-in-out infinite; }
+        @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 20px rgba(81, 85, 209, 0.3); } 50% { box-shadow: 0 0 40px rgba(81, 85, 209, 0.6); } }
+
+        /* Text shimmer */
+        .shimmer { background: linear-gradient(90deg, #5155D1 0%, #8E92FE 50%, #5155D1 100%); background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s ease-in-out infinite; }
+        @keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+
+        /* Line draw animation */
+        .line-draw { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 2s ease forwards; }
+        @keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+        /* Counter animation handled by JS */
+        .counter { font-variant-numeric: tabular-nums; }
     </style>
 </head>
 
@@ -72,25 +111,45 @@
 <nav class="fixed top-0 inset-x-0 z-50 glass bg-surface-light/70 dark:bg-surface-dark/70 border-b border-gray-200/50 dark:border-gray-700/50">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" class="flex items-center gap-2 text-xl font-bold text-primary">
-            <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-                </svg>
-            </div>
+            <img src="assets/icons/app-icon.png" alt="Itemee" class="w-9 h-9 rounded-xl">
             Itemee
         </a>
 
         <div class="hidden md:flex items-center gap-8">
             <a href="#features" class="hover:text-primary transition-colors">Features</a>
             <a href="#screenshots" class="hover:text-primary transition-colors">Screenshots</a>
+            <a href="#use-cases" class="hover:text-primary transition-colors">Use Cases</a>
             <a href="#faq" class="hover:text-primary transition-colors">FAQ</a>
             <a href="#download" class="px-4 py-2 gradient-bg text-white rounded-lg hover:opacity-90 transition-opacity">Download</a>
         </div>
 
-        <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-            <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
-            <svg class="w-5 h-5 block dark:hidden text-gray-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
-        </button>
+        <div class="flex items-center gap-2">
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+                <svg class="w-5 h-5 block dark:hidden text-gray-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+            </button>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                <svg id="menu-icon" class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="close-icon" class="w-5 h-5 text-gray-700 dark:text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile menu drawer -->
+    <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-700 transform -translate-y-full opacity-0 transition-all duration-300 ease-out pointer-events-none">
+        <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col gap-4">
+            <a href="#features" class="mobile-link py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-semibold">Features</a>
+            <a href="#screenshots" class="mobile-link py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-semibold">Screenshots</a>
+            <a href="#use-cases" class="mobile-link py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-semibold">Use Cases</a>
+            <a href="#faq" class="mobile-link py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-semibold">FAQ</a>
+            <a href="#download" class="py-3 px-4 gradient-bg text-white rounded-xl font-bold text-center mobile-link">Download</a>
+        </div>
     </div>
 </nav>
 
@@ -233,44 +292,299 @@
 </section>
 
 
-<!-- ==================== SCREENSHOTS ==================== -->
-<section id="screenshots" class="py-24">
+<!-- ==================== SCREENSHOTS - ZIG-ZAG LAYOUT ==================== -->
+<section id="screenshots" class="py-24 overflow-hidden">
     <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16" data-animate>
+        <div class="text-center mb-20" data-animate>
             <h2 class="text-4xl md:text-5xl font-black">
                 See it in <span class="gradient-text">Action</span>
             </h2>
-            <p class="mt-4 text-xl text-gray-600 dark:text-gray-300">
-                Beautiful design meets powerful functionality
+            <p class="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                A beautifully crafted interface designed for speed and simplicity.
             </p>
         </div>
 
-        <!-- Staggered Screenshots Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="space-y-8">
-                <div class="screenshot-tilt card-hover rounded-2xl overflow-hidden shadow-xl" data-animate>
-                    <img src="assets/images/screenshots/items-page.png" alt="Items Overview" class="w-full">
+        <!-- Zig-zag Feature Rows -->
+        <div class="space-y-24">
+
+            <!-- Row 1: Image Left, Text Right -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center" data-animate>
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-primary/20 rounded-3xl blur-2xl group-hover:bg-primary/30 transition-all duration-500 -z-10"></div>
+                    <img src="assets/images/screenshots/items-page.png" alt="Items Overview" class="rounded-2xl shadow-2xl w-full transform group-hover:scale-[1.02] transition-transform duration-500">
                 </div>
-                <div class="screenshot-tilt card-hover rounded-2xl overflow-hidden shadow-xl" data-animate>
-                    <img src="assets/images/screenshots/filtering.png" alt="Smart Filtering" class="w-full">
+                <div class="lg:pl-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-semibold mb-4">
+                        <span class="w-2 h-2 bg-primary rounded-full"></span>
+                        Core Feature
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">Complete Item Overview</h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        See your entire inventory at a glance. Each item displays its name, quantity, location, and type—all in a clean, scannable list. Search instantly or tap to dive deeper.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Real-time search across all items
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Color-coded labels for quick scanning
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Last modified timestamps
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="space-y-8 md:mt-12">
-                <div class="screenshot-tilt card-hover rounded-2xl overflow-hidden shadow-xl" data-animate>
-                    <img src="assets/images/screenshots/qr-scanning.png" alt="QR Scanning" class="w-full">
+            <!-- Row 2: Text Left, Image Right -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center" data-animate>
+                <div class="lg:pr-8 order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent-purple/10 rounded-full text-accent-purple text-sm font-semibold mb-4">
+                        <span class="w-2 h-2 bg-accent-purple rounded-full"></span>
+                        Lightning Fast
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">QR Code Scanning</h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        Point your camera at any QR code and get instant results. View item details, update quantities, or start a verification session—all in one smooth motion.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Instant item recognition
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Works offline—no internet needed
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Batch scanning mode available
+                        </li>
+                    </ul>
                 </div>
-                <div class="screenshot-tilt card-hover rounded-2xl overflow-hidden shadow-xl" data-animate>
-                    <img src="assets/images/screenshots/team-management.png" alt="Team Management" class="w-full">
+                <div class="relative group order-1 lg:order-2">
+                    <div class="absolute inset-0 bg-accent-purple/20 rounded-3xl blur-2xl group-hover:bg-accent-purple/30 transition-all duration-500 -z-10"></div>
+                    <img src="assets/images/screenshots/qr-scanning.png" alt="QR Scanning" class="rounded-2xl shadow-2xl w-full transform group-hover:scale-[1.02] transition-transform duration-500">
                 </div>
             </div>
 
-            <div class="space-y-8 md:col-span-2 lg:col-span-1">
-                <div class="screenshot-tilt card-hover rounded-2xl overflow-hidden shadow-xl" data-animate>
-                    <img src="assets/images/screenshots/history.png" alt="Change History" class="w-full">
+            <!-- Row 3: Image Left, Text Right -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center" data-animate>
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-accent-orange/20 rounded-3xl blur-2xl group-hover:bg-accent-orange/30 transition-all duration-500 -z-10"></div>
+                    <img src="assets/images/screenshots/team-management.png" alt="Team Management" class="rounded-2xl shadow-2xl w-full transform group-hover:scale-[1.02] transition-transform duration-500">
                 </div>
-                <div class="screenshot-tilt card-hover rounded-2xl overflow-hidden shadow-xl" data-animate>
-                    <img src="assets/images/screenshots/printing.png" alt="Label Printing" class="w-full">
+                <div class="lg:pl-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent-orange/10 rounded-full text-accent-orange text-sm font-semibold mb-4">
+                        <span class="w-2 h-2 bg-accent-orange rounded-full"></span>
+                        Collaboration
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">Team Management</h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        Invite your team by email and assign roles. Owners have full control, admins can manage items, and members can view and update. Changes sync instantly across all devices.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Role-based access control
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Email-based invitations
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Organization activity history
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Row 4: Text Left, Image Right -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center" data-animate>
+                <div class="lg:pr-8 order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent-green/10 rounded-full text-accent-green text-sm font-semibold mb-4">
+                        <span class="w-2 h-2 bg-accent-green rounded-full"></span>
+                        Audit Trail
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">Complete Change History</h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        Every modification is logged. See who changed what, when, and what the previous value was. Perfect for audits, accountability, and tracking inventory movements.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Full audit trail for compliance
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Filter by user, item, or date
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <svg class="w-5 h-5 text-accent-green shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Before/after value comparison
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative group order-1 lg:order-2">
+                    <div class="absolute inset-0 bg-accent-green/20 rounded-3xl blur-2xl group-hover:bg-accent-green/30 transition-all duration-500 -z-10"></div>
+                    <img src="assets/images/screenshots/history.png" alt="Change History" class="rounded-2xl shadow-2xl w-full transform group-hover:scale-[1.02] transition-transform duration-500">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Learn more link -->
+        <div class="text-center mt-20" data-animate>
+            <a href="https://doc.janzimola.com/doc/itemee-lxPiTQC2go" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 gradient-bg text-white rounded-xl font-bold hover:shadow-xl hover:shadow-primary/30 transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Explore All Features in Documentation
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ==================== USE CASES ==================== -->
+<section id="use-cases" class="py-24 bg-surface-light dark:bg-surface-dark overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16" data-animate>
+            <h2 class="text-4xl md:text-5xl font-black">
+                Perfect for <span class="gradient-text">Everyone</span>
+            </h2>
+            <p class="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Whether you're managing a home pantry, school equipment, or business inventory
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Home Use Case -->
+            <div class="group relative p-8 rounded-3xl bg-bg-light dark:bg-bg-dark border border-gray-200 dark:border-gray-700 card-hover overflow-hidden" data-animate>
+                <!-- Decorative background -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-accent-orange/10 rounded-full blur-2xl group-hover:bg-accent-orange/20 transition-colors"></div>
+
+                <div class="relative">
+                    <div class="w-16 h-16 bg-accent-orange/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 text-accent-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-3">Home</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Track your pantry, tools, and household items. Never buy duplicates or forget where you stored something.
+                    </p>
+
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-accent-orange rounded-full"></span>
+                            Pantry & food expiration tracking
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-accent-orange rounded-full"></span>
+                            Tool & equipment location
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-accent-orange rounded-full"></span>
+                            Moving box contents
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-accent-orange rounded-full"></span>
+                            Share with family members
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- School Use Case -->
+            <div class="group relative p-8 rounded-3xl bg-bg-light dark:bg-bg-dark border border-gray-200 dark:border-gray-700 card-hover overflow-hidden" data-animate>
+                <!-- Decorative background -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-colors"></div>
+
+                <div class="relative">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-3">School</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Manage lab equipment, library books, and classroom supplies. Perfect for teachers and administrators.
+                    </p>
+
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            Lab equipment tracking
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            Classroom supplies inventory
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            Student checkout system
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                            Multi-department access
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Business Use Case -->
+            <div class="group relative p-8 rounded-3xl bg-bg-light dark:bg-bg-dark border border-gray-200 dark:border-gray-700 card-hover overflow-hidden" data-animate>
+                <!-- Decorative background -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-accent-green/10 rounded-full blur-2xl group-hover:bg-accent-green/20 transition-colors"></div>
+
+                <div class="relative">
+                    <div class="w-16 h-16 bg-accent-green/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-3">Business</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Professional inventory management with team roles, audit trails, and complete change history.
+                    </p>
+
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-accent-green rounded-full"></span>
+                            Complete audit trail
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-accent-green rounded-full"></span>
+                            Role-based permissions
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-accent-green rounded-full"></span>
+                            Warehouse organization
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <span class="w-1.5 h-1.5 bg-accent-green rounded-full"></span>
+                            QR label printing
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonial/Social proof strip -->
+        <div class="mt-16 text-center" data-animate>
+            <p class="text-gray-500 dark:text-gray-400 text-sm uppercase tracking-wider mb-6">Trusted by users worldwide</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black gradient-text counter" data-target="1000">0</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Active Users</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black gradient-text counter" data-target="50000">0</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Items Tracked</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black gradient-text counter" data-target="200">0</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">Organizations</div>
                 </div>
             </div>
         </div>
@@ -279,7 +593,7 @@
 
 
 <!-- ==================== FAQ ==================== -->
-<section id="faq" class="py-24 bg-surface-light dark:bg-surface-dark">
+<section id="faq" class="py-24 bg-bg-light dark:bg-bg-dark">
     <div class="max-w-3xl mx-auto px-6">
         <div class="text-center mb-16" data-animate>
             <h2 class="text-4xl md:text-5xl font-black">
@@ -403,9 +717,7 @@
 <footer class="py-12 border-t border-gray-200 dark:border-gray-800">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <a href="#" class="flex items-center gap-2 text-xl font-bold text-primary">
-            <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-            </div>
+            <img src="assets/icons/app-icon.png" alt="Itemee" class="w-9 h-9 rounded-xl">
             Itemee
         </a>
 
@@ -416,7 +728,7 @@
         </div>
 
         <div class="text-sm text-gray-500 dark:text-gray-400">
-            &copy; 2024 Itemee
+            &copy; 2024 Itemee. Made by Jan Zimola
         </div>
     </div>
 </footer>
@@ -428,7 +740,6 @@
 const toggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
 
-// Check saved preference or system preference
 if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     html.classList.add('dark');
 }
@@ -436,6 +747,37 @@ if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('
 toggle.addEventListener('click', () => {
     html.classList.toggle('dark');
     localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+});
+
+// Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuIcon = document.getElementById('menu-icon');
+const closeIcon = document.getElementById('close-icon');
+let menuOpen = false;
+
+function toggleMobileMenu() {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+        mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        mobileMenu.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+    } else {
+        mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+    }
+}
+
+mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+        if (menuOpen) toggleMobileMenu();
+    });
 });
 
 // FAQ Accordion
@@ -447,16 +789,66 @@ document.querySelectorAll('.faq-toggle').forEach(btn => {
     });
 });
 
-// Scroll Animations
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+// Enhanced Scroll Animations with staggered delays
+const animateObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            // Add slight delay for staggered effect
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+            }, index * 100);
         }
     });
-}, { threshold: 0.1 });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+// Observe all animation types
+document.querySelectorAll('[data-animate], [data-animate-left], [data-animate-right], [data-animate-scale], .stagger-children').forEach(el => {
+    animateObserver.observe(el);
+});
+
+// Parallax effect on scroll
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll('.parallax').forEach(el => {
+                const speed = el.dataset.speed || 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+// Counter animation for stats
+function animateCounter(el, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+            el.textContent = target.toLocaleString();
+            clearInterval(timer);
+        } else {
+            el.textContent = Math.floor(start).toLocaleString();
+        }
+    }, 16);
+}
+
+// Observe counters
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+            entry.target.classList.add('counted');
+            const target = parseInt(entry.target.dataset.target);
+            animateCounter(entry.target, target);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
 // Smooth scroll for nav links
 document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -465,6 +857,20 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         document.querySelector(link.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
     });
 });
+
+// Navbar hide/show on scroll
+let lastScroll = 0;
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll && currentScroll > 100) {
+        nav.style.transform = 'translateY(-100%)';
+    } else {
+        nav.style.transform = 'translateY(0)';
+    }
+    lastScroll = currentScroll;
+});
+nav.style.transition = 'transform 0.3s ease';
 </script>
 
 </body>
