@@ -3,17 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itemee - Inventory Management Made Simple</title>
-    <meta name="description" content="Bring order to your inventory. Perfect for Home, School & Business.">
+
+    <!-- Primary Meta Tags -->
+    <title>Itemee - Smart Inventory Management App for Home, School & Business</title>
+    <meta name="title" content="Itemee - Smart Inventory Management App for Home, School & Business">
+    <meta name="description" content="Organize your belongings with QR codes, offline-first sync, and team collaboration. Free inventory app for families, schools, and businesses. Track items, print labels, and stay organized.">
+    <meta name="keywords" content="inventory management, QR code organizer, home inventory app, asset tracking, inventory tracker, household inventory, business inventory, school equipment tracking, offline inventory app, team collaboration inventory">
+    <meta name="author" content="Jan Zimola">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://itemee.janzimola.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://itemee.janzimola.com/">
+    <meta property="og:title" content="Itemee - Smart Inventory Management App">
+    <meta property="og:description" content="Organize your belongings with QR codes, offline-first sync, and team collaboration. Free inventory app for families, schools, and businesses.">
+    <meta property="og:image" content="https://itemee.janzimola.com/assets/images/desktop/en/hero.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Itemee">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://itemee.janzimola.com/">
+    <meta name="twitter:title" content="Itemee - Smart Inventory Management App">
+    <meta name="twitter:description" content="Organize your belongings with QR codes, offline-first sync, and team collaboration. Free inventory app for families, schools, and businesses.">
+    <meta name="twitter:image" content="https://itemee.janzimola.com/assets/images/desktop/en/hero.png">
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#5155D1">
+    <meta name="apple-mobile-web-app-title" content="Itemee">
+    <meta name="application-name" content="Itemee">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/icons/app-icon.png">
     <link rel="apple-touch-icon" href="assets/icons/app-icon.png">
 
-    <!-- Fonts -->
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://api.janzimola.com">
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Itemee",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "iOS, Android, Windows, macOS",
+        "description": "Smart inventory management app with QR code scanning, offline-first sync, and team collaboration. Perfect for families, schools, and businesses.",
+        "url": "https://itemee.janzimola.com",
+        "author": {
+            "@type": "Person",
+            "name": "Jan Zimola"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "ratingCount": "1"
+        },
+        "featureList": [
+            "QR Code Scanning",
+            "Offline-First Sync",
+            "Team Collaboration",
+            "Label Organization",
+            "Inventory Verification",
+            "Change History Tracking"
+        ]
+    }
+    </script>
+
+    <!-- Structured Data - FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Itemee?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Itemee is an inventory management app for families, schools, and businesses. Track items with QR codes, organize with labels, and share with your household or team."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Itemee free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Itemee offers a free tier with essential features. Premium plans are available for teams and advanced features."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does Itemee work offline?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely! Itemee is offline-first. All data is stored locally and syncs automatically when you reconnect."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which platforms are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Itemee is available on iOS, Android, Windows, and macOS. Your data syncs across all devices."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I collaborate with my team?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Create organizations, invite team members with different roles, and collaborate in real-time."
+                }
+            }
+        ]
+    }
+    </script>
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -114,8 +235,8 @@
 <!-- ==================== NAVBAR ==================== -->
 <nav class="fixed top-0 inset-x-0 z-50 glass bg-surface-light/70 dark:bg-surface-dark/70 border-b border-gray-200/50 dark:border-gray-700/50">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" class="flex items-center gap-2 text-xl font-bold text-primary">
-            <img src="assets/icons/app-icon.png" alt="Itemee" class="w-9 h-9 rounded-xl">
+        <a href="#" class="flex items-center gap-2 text-xl font-bold text-primary" aria-label="Itemee Home">
+            <img src="assets/icons/app-icon.png" alt="Itemee Logo" class="w-9 h-9 rounded-xl">
             Itemee
         </a>
 
@@ -201,7 +322,7 @@
         <!-- Large Hero Desktop Screenshot -->
         <div class="relative animate-slide-up group">
             <div class="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl -z-10"></div>
-            <img src="assets/images/desktop/en/hero.png" alt="Itemee App on Desktop" class="lang-img w-full max-w-6xl mx-auto rounded-2xl shadow-2xl shadow-primary/30 group-hover:scale-[1.01] transition-transform duration-500" data-src-en="assets/images/desktop/en/hero.png" data-src-cs="assets/images/desktop/cs/hero.png">
+            <img src="assets/images/desktop/en/hero.png" alt="Itemee inventory management app dashboard showing organized items with QR codes and labels" class="lang-img w-full max-w-6xl mx-auto rounded-2xl shadow-2xl shadow-primary/30 group-hover:scale-[1.01] transition-transform duration-500" data-src-en="assets/images/desktop/en/hero.png" data-src-cs="assets/images/desktop/cs/hero.png">
 
             <!-- Floating badges -->
             <div class="absolute top-4 right-4 md:top-8 md:right-8 px-4 py-2 bg-accent-green text-white rounded-full text-sm font-bold shadow-lg animate-bounce-subtle" data-i18n="hero.badgeOffline">
@@ -242,11 +363,11 @@
             <div class="relative flex justify-center items-center group rounded-3xl overflow-hidden">
                 <!-- Lifestyle background image -->
                 <div class="absolute inset-0 -z-10">
-                    <img src="assets/images/backgrounds/home-pantry-bg.png" alt="" class="w-full h-full object-cover opacity-30 dark:opacity-20">
+                    <img src="assets/images/backgrounds/home-pantry-bg.png" alt="Home pantry organization background" class="w-full h-full object-cover opacity-30 dark:opacity-20" loading="lazy">
                     <div class="absolute inset-0 bg-gradient-to-t from-bg-light dark:from-bg-dark via-transparent to-bg-light dark:to-bg-dark"></div>
                 </div>
                 <div class="absolute inset-0 bg-accent-orange/10 rounded-3xl -z-10"></div>
-                <img src="assets/images/use-cases/home-pantry.png" alt="Pantry inventory" class="lang-img w-full max-w-5xl group-hover:scale-[1.02] transition-transform duration-500" data-src-en="assets/images/use-cases/home-pantry.png" data-src-cs="assets/images/use-cases/cs/home-pantry.png">
+                <img src="assets/images/use-cases/home-pantry.png" alt="Home pantry inventory management with Itemee app - track food, supplies and household items" class="lang-img w-full max-w-5xl group-hover:scale-[1.02] transition-transform duration-500" loading="lazy" data-src-en="assets/images/use-cases/home-pantry.png" data-src-cs="assets/images/use-cases/cs/home-pantry.png">
             </div>
         </div>
 
@@ -263,7 +384,7 @@
             </div>
             <div class="relative flex justify-center items-center group">
                 <div class="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl -z-10"></div>
-                <img src="assets/images/screenshots/your-way-labels-en.png" alt="Organize with labels" class="lang-img w-full max-w-6xl rounded-2xl shadow-2xl group-hover:scale-[1.01] transition-transform duration-500" data-src-en="assets/images/screenshots/your-way-labels-en.png" data-src-cs="assets/images/screenshots/your-way-labels-cs.png">
+                <img src="assets/images/screenshots/your-way-labels-en.png" alt="Organize inventory items with custom labels, locations, and categories in Itemee app" class="lang-img w-full max-w-6xl rounded-2xl shadow-2xl group-hover:scale-[1.01] transition-transform duration-500" loading="lazy" data-src-en="assets/images/screenshots/your-way-labels-en.png" data-src-cs="assets/images/screenshots/your-way-labels-cs.png">
             </div>
         </div>
 
@@ -280,7 +401,7 @@
             </div>
             <div class="relative flex justify-center items-center group">
                 <div class="absolute inset-0 bg-accent-green/20 rounded-3xl blur-3xl -z-10"></div>
-                <img src="assets/images/combined/printing-labels.png" alt="QR Label Printing" class="lang-img w-full max-w-6xl group-hover:scale-[1.02] transition-transform duration-500" data-src-en="assets/images/combined/printing-labels.png" data-src-cs="assets/images/combined/cs/printing-labels.png">
+                <img src="assets/images/combined/printing-labels.png" alt="Generate and print QR code labels for inventory items - Itemee label printing feature" class="lang-img w-full max-w-6xl group-hover:scale-[1.02] transition-transform duration-500" loading="lazy" data-src-en="assets/images/combined/printing-labels.png" data-src-cs="assets/images/combined/cs/printing-labels.png">
             </div>
         </div>
 
@@ -297,7 +418,7 @@
             </div>
             <div class="relative flex justify-center items-center group">
                 <div class="absolute inset-0 bg-accent-purple/20 rounded-3xl blur-3xl -z-10"></div>
-                <img src="assets/images/combined/edit-scanning.png" alt="QR Scanning" class="lang-img w-full max-w-5xl group-hover:scale-[1.02] transition-transform duration-500" data-src-en="assets/images/combined/edit-scanning.png" data-src-cs="assets/images/combined/cs/edit-scanning.png">
+                <img src="assets/images/combined/edit-scanning.png" alt="Scan QR codes to instantly find and edit inventory items - Itemee QR scanning feature" class="lang-img w-full max-w-5xl group-hover:scale-[1.02] transition-transform duration-500" loading="lazy" data-src-en="assets/images/combined/edit-scanning.png" data-src-cs="assets/images/combined/cs/edit-scanning.png">
             </div>
         </div>
 
@@ -314,7 +435,7 @@
             </div>
             <div class="relative flex justify-center items-center group">
                 <div class="absolute inset-0 bg-accent-yellow/20 rounded-3xl blur-3xl -z-10"></div>
-                <img src="assets/images/combined/verification.png" alt="Verification" class="w-full max-w-6xl group-hover:scale-[1.02] transition-transform duration-500">
+                <img src="assets/images/combined/verification.png" alt="Verify inventory items and track missing or confirmed items with Itemee verification feature" class="w-full max-w-6xl group-hover:scale-[1.02] transition-transform duration-500" loading="lazy">
             </div>
         </div>
 
@@ -330,7 +451,7 @@
                 </p>
             </div>
             <div class="relative flex justify-center items-center group">
-                <img src="assets/images/combined/organization.png" alt="Team Management" class="lang-img w-full max-w-5xl group-hover:scale-[1.02] transition-transform duration-500" data-src-en="assets/images/combined/organization.png" data-src-cs="assets/images/combined/cs/organization.png">
+                <img src="assets/images/combined/organization.png" alt="Team collaboration and organization management in Itemee - invite members and share inventory" class="lang-img w-full max-w-5xl group-hover:scale-[1.02] transition-transform duration-500" loading="lazy" data-src-en="assets/images/combined/organization.png" data-src-cs="assets/images/combined/cs/organization.png">
             </div>
         </div>
 
@@ -347,7 +468,7 @@
             </div>
             <div class="relative flex justify-center items-center group">
                 <div class="absolute inset-0 bg-accent-green/20 rounded-3xl blur-3xl -z-10"></div>
-                <img src="assets/images/desktop/en/history.png" alt="Change History on Desktop" class="lang-img w-full max-w-6xl rounded-2xl shadow-2xl group-hover:scale-[1.01] transition-transform duration-500" data-src-en="assets/images/desktop/en/history.png" data-src-cs="assets/images/desktop/cs/history.png">
+                <img src="assets/images/desktop/en/history.png" alt="Complete change history and audit trail for inventory items - track who changed what and when" class="lang-img w-full max-w-6xl rounded-2xl shadow-2xl group-hover:scale-[1.01] transition-transform duration-500" loading="lazy" data-src-en="assets/images/desktop/en/history.png" data-src-cs="assets/images/desktop/cs/history.png">
             </div>
         </div>
 
@@ -440,17 +561,17 @@
 
             <!-- Desktop in center/back -->
             <div class="relative z-10 w-full max-w-3xl mx-auto">
-                <img src="assets/images/desktop/en/hero.png" alt="Desktop App" class="lang-img w-full rounded-xl shadow-2xl" data-src-en="assets/images/desktop/en/hero.png" data-src-cs="assets/images/desktop/cs/hero.png">
+                <img src="assets/images/desktop/en/hero.png" alt="Itemee desktop app for Windows and macOS - full inventory management on your computer" class="lang-img w-full rounded-xl shadow-2xl" loading="lazy" data-src-en="assets/images/desktop/en/hero.png" data-src-cs="assets/images/desktop/cs/hero.png">
             </div>
 
             <!-- Tablet floating on left - with white border -->
             <div class="absolute -left-12 md:-left-8 lg:-left-4 top-1/2 -translate-y-1/2 z-20 w-56 md:w-80 lg:w-[420px] hidden sm:block">
-                <img src="assets/images/tablet/en/home-pantry.png" alt="Tablet App" class="lang-img rounded-xl shadow-2xl shadow-black/30 border-4 border-white dark:border-gray-800" data-src-en="assets/images/tablet/en/home-pantry.png" data-src-cs="assets/images/tablet/cs/home-pantry.png">
+                <img src="assets/images/tablet/en/home-pantry.png" alt="Itemee tablet app for iPad - manage inventory on the go" class="lang-img rounded-xl shadow-2xl shadow-black/30 border-4 border-white dark:border-gray-800" loading="lazy" data-src-en="assets/images/tablet/en/home-pantry.png" data-src-cs="assets/images/tablet/cs/home-pantry.png">
             </div>
 
             <!-- Mobile floating above desktop - centered and overlapping top -->
             <div class="absolute right-8 md:right-16 lg:right-24 -top-8 md:-top-12 lg:-top-16 z-20 w-40 md:w-56 lg:w-72">
-                <img src="assets/images/use-cases/home-pantry.png" alt="Mobile App" class="lang-img rounded-2xl shadow-2xl shadow-black/30" data-src-en="assets/images/use-cases/home-pantry.png" data-src-cs="assets/images/use-cases/cs/home-pantry.png">
+                <img src="assets/images/use-cases/home-pantry.png" alt="Itemee mobile app for iPhone and Android - inventory management in your pocket" class="lang-img rounded-2xl shadow-2xl shadow-black/30" loading="lazy" data-src-en="assets/images/use-cases/home-pantry.png" data-src-cs="assets/images/use-cases/cs/home-pantry.png">
             </div>
         </div>
 
@@ -540,7 +661,7 @@
 
                 <!-- Right: Illustration -->
                 <div class="hidden md:flex justify-center">
-                    <img src="assets/images/illustrations/To-Do App Illustration.svg" alt="Get organized" class="w-full max-w-xs opacity-90">
+                    <img src="assets/images/illustrations/To-Do App Illustration.svg" alt="Illustration of organized inventory and task management" class="w-full max-w-xs opacity-90" loading="lazy">
                 </div>
             </div>
         </div>
@@ -609,7 +730,7 @@
 <footer class="py-12 border-t border-gray-200 dark:border-gray-800">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <a href="#" class="flex items-center gap-2 text-xl font-bold text-primary">
-            <img src="assets/icons/app-icon.png" alt="Itemee" class="w-9 h-9 rounded-xl">
+            <img src="assets/icons/app-icon.png" alt="Itemee - Inventory Management App" class="w-9 h-9 rounded-xl">
             Itemee
         </a>
 
@@ -621,7 +742,7 @@
         </div>
 
         <div class="text-sm text-gray-500 dark:text-gray-400">
-            &copy; 2024 Itemee. Made by Jan Zimola
+            &copy; 2025 Itemee. Made by Jan Zimola
         </div>
     </div>
 </footer>
